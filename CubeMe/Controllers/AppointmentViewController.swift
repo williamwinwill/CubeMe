@@ -34,8 +34,11 @@ class AppointmentViewController: UIViewController {
         
         roomNameLabel.text = room.name
         numberOfChairs.text = "\(room.chair)"
+        dateLabel.text = roomSchedule.date?.toString(dateFormat: "dd/MM/yyyy")
         
         setupIconColor(room)
+        
+        setupHour()
         
     }
     
@@ -70,4 +73,59 @@ class AppointmentViewController: UIViewController {
         }
         
     }
+    
+    @IBOutlet var collectionView: UICollectionView!
+    var hours: [String] = []
+    
+    func setupHour() {
+        
+        for h in 8...12 {
+            hours.append("\(h) AM")
+        }
+        
+        for h in 1...7 {
+            hours.append("\(h) PM")
+        }
+
+    }
+    
+    
+}
+
+extension AppointmentViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return hours.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionViewCell", for: indexPath) as! CollectionViewCell
+        
+        let hour = hours[indexPath.row]
+        
+        cell.oneLabel.text = hour
+        
+        if hour == "12 AM" {
+            
+            cell.isUserInteractionEnabled = false
+            cell.backgroundColor = UIColor.lightGray
+            
+        } else {
+            
+            cell.backgroundColor = UIColor(colorWithHexValue: 0x2d89bf)
+        }
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let cell = collectionView.cellForItem(at: indexPath)
+        
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = UIColor(colorWithHexValue: 0xe3b505)
+        cell?.selectedBackgroundView = backgroundView
+        
+    }
+    
 }

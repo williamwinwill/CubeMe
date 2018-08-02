@@ -58,8 +58,8 @@ class RoomTableViewController: UIViewController, UITableViewDelegate, UITableVie
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "roomTableViewCell") as! RoomTableViewCell
-        //let room = rooms[indexPath.row]
         let room = Storage.rooms[indexPath.row]
         setupRoomCell(cell, room)
         
@@ -68,8 +68,6 @@ class RoomTableViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
-            // delete item at indexPath
-            //self.rooms.remove(at: indexPath.row)
             Storage.rooms.remove(at: indexPath.row)
             self.roomTableView.reloadData()
         }

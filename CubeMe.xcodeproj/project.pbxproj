@@ -11,6 +11,7 @@
 		401002E5210D470F00748188 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401002E4210D470F00748188 /* Room.swift */; };
 		401002E8210D492400748188 /* RoomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401002E7210D492400748188 /* RoomTableViewCell.swift */; };
 		4011D4C5210BDB85004F9A6D /* RoomTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4011D4C4210BDB85004F9A6D /* RoomTableViewController.swift */; };
+		405EF8B52113860E00F64CCB /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405EF8B42113860E00F64CCB /* CollectionViewCell.swift */; };
 		406F17312110C6EA00079BDA /* RoomShedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406F17302110C6EA00079BDA /* RoomShedule.swift */; };
 		406F17332110C77C00079BDA /* Appointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406F17322110C77C00079BDA /* Appointment.swift */; };
 		406F17352110C9B100079BDA /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406F17342110C9B100079BDA /* CalendarViewController.swift */; };
@@ -35,6 +36,7 @@
 		401002E4210D470F00748188 /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		401002E7210D492400748188 /* RoomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomTableViewCell.swift; sourceTree = "<group>"; };
 		4011D4C4210BDB85004F9A6D /* RoomTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomTableViewController.swift; sourceTree = "<group>"; };
+		405EF8B42113860E00F64CCB /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		406F17302110C6EA00079BDA /* RoomShedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomShedule.swift; sourceTree = "<group>"; };
 		406F17322110C77C00079BDA /* Appointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appointment.swift; sourceTree = "<group>"; };
 		406F17342110C9B100079BDA /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 				401002E7210D492400748188 /* RoomTableViewCell.swift */,
 				4073A35D210FBF5900A99E59 /* ScheduleRoomTableViewCell.swift */,
 				406F17382110CA5800079BDA /* CustomCell.swift */,
+				405EF8B42113860E00F64CCB /* CollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 			files = (
 				40D9C336210BE14800148D4C /* RoomViewController.swift in Sources */,
 				408BEC112110BF6600130F69 /* UILabel+Image.swift in Sources */,
+				405EF8B52113860E00F64CCB /* CollectionViewCell.swift in Sources */,
 				401002E8210D492400748188 /* RoomTableViewCell.swift in Sources */,
 				406F17332110C77C00079BDA /* Appointment.swift in Sources */,
 				4011D4C5210BDB85004F9A6D /* RoomTableViewController.swift in Sources */,

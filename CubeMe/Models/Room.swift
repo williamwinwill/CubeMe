@@ -10,10 +10,14 @@ import Foundation
 
 class Room {
     
-    init(name: String) {
+    //    init(uid: Int, name: String) {
+    init( name: String) {
         self.name = name
+        //self.uid = uxid
+        //self.schedule = []
     }
     
+    var uid: Int?
     var name: String    
     var location: String = ""
     
@@ -24,5 +28,7 @@ class Room {
     var wifi: Bool = false
     var airConditioner: Bool = false
     var projector: Bool = false
+    
+    var schedule = [Date: [Appointment]]()
     
 }

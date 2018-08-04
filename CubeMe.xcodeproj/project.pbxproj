@@ -12,7 +12,6 @@
 		401002E8210D492400748188 /* RoomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401002E7210D492400748188 /* RoomTableViewCell.swift */; };
 		4011D4C5210BDB85004F9A6D /* RoomTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4011D4C4210BDB85004F9A6D /* RoomTableViewController.swift */; };
 		405EF8B52113860E00F64CCB /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405EF8B42113860E00F64CCB /* CollectionViewCell.swift */; };
-		406F17312110C6EA00079BDA /* RoomShedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406F17302110C6EA00079BDA /* RoomShedule.swift */; };
 		406F17332110C77C00079BDA /* Appointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406F17322110C77C00079BDA /* Appointment.swift */; };
 		406F17352110C9B100079BDA /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406F17342110C9B100079BDA /* CalendarViewController.swift */; };
 		406F17372110CA0F00079BDA /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406F17362110CA0F00079BDA /* UIColor+Hex.swift */; };
@@ -29,6 +28,8 @@
 		40AE12C221079CC90032CA37 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40AE12C021079CC90032CA37 /* LaunchScreen.storyboard */; };
 		40C2B88B2111068300FBC912 /* String+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C2B88A2111068300FBC912 /* String+Date.swift */; };
 		40D9C336210BE14800148D4C /* RoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D9C335210BE14800148D4C /* RoomViewController.swift */; };
+		40F7E540211516B80094021A /* MyAppointmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F7E53F211516B80094021A /* MyAppointmentViewController.swift */; };
+		40F7E542211517080094021A /* AppointmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F7E541211517080094021A /* AppointmentTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,7 +38,6 @@
 		401002E7210D492400748188 /* RoomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomTableViewCell.swift; sourceTree = "<group>"; };
 		4011D4C4210BDB85004F9A6D /* RoomTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomTableViewController.swift; sourceTree = "<group>"; };
 		405EF8B42113860E00F64CCB /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
-		406F17302110C6EA00079BDA /* RoomShedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomShedule.swift; sourceTree = "<group>"; };
 		406F17322110C77C00079BDA /* Appointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appointment.swift; sourceTree = "<group>"; };
 		406F17342110C9B100079BDA /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		406F17362110CA0F00079BDA /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
@@ -56,6 +56,8 @@
 		40AE12C321079CC90032CA37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		40C2B88A2111068300FBC912 /* String+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Date.swift"; sourceTree = "<group>"; };
 		40D9C335210BE14800148D4C /* RoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomViewController.swift; sourceTree = "<group>"; };
+		40F7E53F211516B80094021A /* MyAppointmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAppointmentViewController.swift; sourceTree = "<group>"; };
+		40F7E541211517080094021A /* AppointmentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentTableViewCell.swift; sourceTree = "<group>"; };
 		4E95F3A943BC692C2C87C102 /* Pods-CubeMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CubeMe.release.xcconfig"; path = "Pods/Target Support Files/Pods-CubeMe/Pods-CubeMe.release.xcconfig"; sourceTree = "<group>"; };
 		9857C7715F35FF5046866FE8 /* Pods-CubeMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CubeMe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CubeMe/Pods-CubeMe.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -79,6 +81,7 @@
 				4073A35D210FBF5900A99E59 /* ScheduleRoomTableViewCell.swift */,
 				406F17382110CA5800079BDA /* CustomCell.swift */,
 				405EF8B42113860E00F64CCB /* CollectionViewCell.swift */,
+				40F7E541211517080094021A /* AppointmentTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -169,6 +172,7 @@
 				4011D4C4210BDB85004F9A6D /* RoomTableViewController.swift */,
 				406F17342110C9B100079BDA /* CalendarViewController.swift */,
 				406F173C2110DA5900079BDA /* AppointmentViewController.swift */,
+				40F7E53F211516B80094021A /* MyAppointmentViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -177,7 +181,6 @@
 			isa = PBXGroup;
 			children = (
 				401002E4210D470F00748188 /* Room.swift */,
-				406F17302110C6EA00079BDA /* RoomShedule.swift */,
 				406F17322110C77C00079BDA /* Appointment.swift */,
 			);
 			path = Models;
@@ -296,10 +299,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-CubeMe/Pods-CubeMe-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
+				"${BUILT_PRODUCTS_DIR}/ProgressHUD/ProgressHUD.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTAppleCalendar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProgressHUD.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -324,10 +329,11 @@
 				406F173D2110DA5900079BDA /* AppointmentViewController.swift in Sources */,
 				4073A360210FD67700A99E59 /* Storage.swift in Sources */,
 				406F17392110CA5800079BDA /* CustomCell.swift in Sources */,
+				40F7E542211517080094021A /* AppointmentTableViewCell.swift in Sources */,
+				40F7E540211516B80094021A /* MyAppointmentViewController.swift in Sources */,
 				40C2B88B2111068300FBC912 /* String+Date.swift in Sources */,
 				406F17352110C9B100079BDA /* CalendarViewController.swift in Sources */,
 				401002E5210D470F00748188 /* Room.swift in Sources */,
-				406F17312110C6EA00079BDA /* RoomShedule.swift in Sources */,
 				408BEC132110BFEA00130F69 /* Date+String.swift in Sources */,
 				40AE12B821079CC80032CA37 /* AppDelegate.swift in Sources */,
 			);
@@ -483,6 +489,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.williamwinwill.CubeMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -502,6 +509,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.williamwinwill.CubeMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

@@ -17,4 +17,6 @@ class RoomTableViewCell : UITableViewCell {
     
     @IBOutlet weak var roomLockLabel: UILabel!
     
+    @IBOutlet weak var lockImageView: UIImageView!
+    
 }

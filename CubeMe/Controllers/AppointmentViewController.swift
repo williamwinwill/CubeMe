@@ -10,14 +10,20 @@ import UIKit
 
 class AppointmentViewController: UIViewController {
     
-    var roomSchedule: RoomSchedule?
+    var dateParam: Date?
+    var roomParam: Room?
+    var appointment: Appointment?
+    var hour: String?
     
+    //Labels
     @IBOutlet weak var roomNameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var numberOfChairs: UILabel!
     
+    //Input
     @IBOutlet weak var descriptionTextField: UITextField!
     
+    //Icons
     @IBOutlet weak var iconChair: UIImageView!
     @IBOutlet weak var iconAir: UIImageView!
     @IBOutlet weak var iconCoffee: UIImageView!
@@ -25,21 +31,57 @@ class AppointmentViewController: UIViewController {
     @IBOutlet weak var iconWhiteBoard: UIImageView!
     @IBOutlet weak var iconWifi: UIImageView!
     
+    //Collection
+    @IBOutlet var collectionView: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let roomSchedule = roomSchedule,
-            let room = roomSchedule.room
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(addTapped))
+        
+        
+        //Dismiss Keyboard
+        //self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
+        
+        guard let room = roomParam, let date = dateParam
             else {return}
         
         roomNameLabel.text = room.name
         numberOfChairs.text = "\(room.chair)"
-        dateLabel.text = roomSchedule.date?.toString(dateFormat: "dd/MM/yyyy")
+        dateLabel.text = date.toString(dateFormat: "dd/MM/yyyy")
         
         setupIconColor(room)
         
-        setupHour()
+    }
+    
+    @objc func addTapped() {
+        //performSegue(withIdentifier: "saveAppointment", sender: nil)
         
+        guard let date = dateParam, let hour = hour else {return}
+        
+        let appointment = Appointment(description: descriptionTextField.text!, hour: hour)
+        
+        if var appointments = roomParam?.schedule[date]  {
+            
+            let isHourThere = appointments.contains { (everyAppointment) -> Bool in
+                everyAppointment.hour == appointment.hour
+            }
+            
+            if isHourThere { return }
+            
+            appointments.append(appointment)
+            
+            roomParam?.schedule[date] = appointments
+            
+        } else {
+            
+            roomParam?.schedule[date] = [appointment]
+        }
+        
+        navigationController?.popViewController(animated: true)
     }
     
     func setupIconColor(_ room: Room) {
@@ -74,45 +116,43 @@ class AppointmentViewController: UIViewController {
         
     }
     
-    @IBOutlet var collectionView: UICollectionView!
-    var hours: [String] = []
-    
-    func setupHour() {
-        
-        for h in 8...12 {
-            hours.append("\(h) AM")
-        }
-        
-        for h in 1...7 {
-            hours.append("\(h) PM")
-        }
-
-    }
-    
-    
 }
 
 extension AppointmentViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return hours.count
+        return Storage.hours.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionViewCell", for: indexPath) as! CollectionViewCell
         
-        let hour = hours[indexPath.row]
+        let hour = Storage.hours[indexPath.row]
         
         cell.oneLabel.text = hour
         
-        if hour == "12 AM" {
+        if let date = dateParam {
             
-            cell.isUserInteractionEnabled = false
-            cell.backgroundColor = UIColor.lightGray
-            
-        } else {
-            
-            cell.backgroundColor = UIColor(colorWithHexValue: 0x2d89bf)
+            if let appointments = roomParam?.schedule[date]  {
+                
+                let isHourThere = appointments.contains { (everyAppointment) -> Bool in
+                    everyAppointment.hour == hour
+                }
+                
+                if isHourThere {
+                    
+                    cell.isUserInteractionEnabled = false
+                    cell.backgroundColor = UIColor.lightGray
+                    
+                } else {
+                    
+                    cell.backgroundColor = UIColor(colorWithHexValue: 0x2d89bf)
+                }
+                
+            } else {
+                
+                cell.backgroundColor = UIColor(colorWithHexValue: 0x2d89bf)
+            }
         }
         
         return cell
@@ -120,12 +160,13 @@ extension AppointmentViewController: UICollectionViewDelegate, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let cell = collectionView.cellForItem(at: indexPath)
+        let cell = collectionView.cellForItem(at: indexPath) as! CollectionViewCell
         
         let backgroundView = UIView()
         backgroundView.backgroundColor = UIColor(colorWithHexValue: 0xe3b505)
-        cell?.selectedBackgroundView = backgroundView
+        cell.selectedBackgroundView = backgroundView
         
+        hour = cell.oneLabel.text
     }
     
 }

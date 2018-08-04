@@ -10,15 +10,16 @@ import Foundation
 
 class Appointment {
     
-    var startDate: Date
-    var endDate: Date
-    var description: String
+    var description: String?
+    var hour: String?
     var user: Any?
+    var date: Date?
+    var roomName: String?
     
-    init(startDate: Date, endDate: Date, description: String) {
+    
+    init(description: String, hour: String) {
         
-        self.startDate = startDate
-        self.endDate = endDate
         self.description = description
+        self.hour = hour
     }
 }

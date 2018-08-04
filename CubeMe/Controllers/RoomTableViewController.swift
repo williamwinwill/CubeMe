@@ -10,12 +10,6 @@ import UIKit
 
 class RoomTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-//    var rooms: [Room] = []{
-//        didSet{
-//            roomTableView.reloadData()
-//        }
-//    }
-    
     @IBOutlet weak var roomTableView: UITableView!
     
     @IBAction func unwindWithSegue(_ segue: UIStoryboardSegue) {
@@ -27,8 +21,6 @@ class RoomTableViewController: UIViewController, UITableViewDelegate, UITableVie
         
         roomTableView.delegate = self
         roomTableView.dataSource = self
-        //rooms = Storage.rooms
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -63,6 +55,10 @@ class RoomTableViewController: UIViewController, UITableViewDelegate, UITableVie
         let room = Storage.rooms[indexPath.row]
         setupRoomCell(cell, room)
         
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = UIColor(colorWithHexValue: 0x05668d)
+        cell.selectedBackgroundView = backgroundView
+        
         return cell
     }
     
@@ -75,9 +71,16 @@ class RoomTableViewController: UIViewController, UITableViewDelegate, UITableVie
         return [delete]
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.backgroundColor = UIColor(colorWithHexValue: 0x044389)
+    }
+    
     private func setupRoomCell(_ cell: RoomTableViewCell, _ room: Room) {
         cell.roomNameLabel.text = room.name
         cell.roomLocationLabel.text = room.location
+        
+        //cell.lockImageView.image = cell.lockImageView.image?.withRenderingMode(.alwaysTemplate)
+        //cell.lockImageView.tintColor = UIColor(colorWithHexValue: 0xe3b505)
         
         let image: UIImage?
         if room.lock {

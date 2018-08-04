@@ -8,11 +8,14 @@
 
 import UIKit
 import JTAppleCalendar
+import ProgressHUD
 
 class CalendarViewController: UIViewController {
     
-    var roomSchedule: RoomSchedule = RoomSchedule()
+    var roomParam: Room?
+    var dateParam: Date?
     var dateAll: Date = Date()
+    var today: Date = Date()
     
     let outsideMonthColor = UIColor(colorWithHexValue: 0x584a66)
     let monthColor = UIColor.white
@@ -45,6 +48,8 @@ class CalendarViewController: UIViewController {
         calendarView.minimumLineSpacing = 0
         calendarView.minimumInteritemSpacing = 0
         
+        calendarView.scrollToDate(today)
+        
         calendarView.visibleDates { visibleDates in
             self.setupViewsOfCalendar(from: visibleDates)
         }
@@ -61,11 +66,11 @@ class CalendarViewController: UIViewController {
             validCell.selectedView.isHidden = false
             
             guard let dayString = validCell.dateLabel.text else { return }
+            
             var dateString   = dateAll.toString(dateFormat: "YYYY-MM")
             dateString.append("-\(dayString)")
             let date = dateString.toDate(dateFormat: "yyyy-MM-dd")
-            
-            roomSchedule.date = date
+            dateParam = date
             
             Storage.roomsDate = Storage.rooms
             scheduleRoomTableView.reloadData()
@@ -82,12 +87,19 @@ class CalendarViewController: UIViewController {
         guard let validCell = view as? CustomCell  else { return }
         
         if cellState.isSelected {
+            
             validCell.dateLabel.textColor = selectedMonthColor
+            
         } else {
+            
             if cellState.dateBelongsTo == .thisMonth {
+                
                 validCell.dateLabel.textColor = monthColor
+                
             } else {
+                
                 validCell.dateLabel.textColor = outsideMonthColor
+                
             }
         }
     }
@@ -115,15 +127,13 @@ class CalendarViewController: UIViewController {
         case "toAddAppointment":
             
             let avc = segue.destination as! AppointmentViewController
-            avc.roomSchedule = roomSchedule
+            avc.dateParam = dateParam
+            avc.roomParam = roomParam
             
         default:
             print("Error")
         }
-        
     }
-    
-    
 }
 
 extension CalendarViewController:  JTAppleCalendarViewDataSource {
@@ -138,7 +148,7 @@ extension CalendarViewController:  JTAppleCalendarViewDataSource {
         let endDate = formatter.date(from: "2018 12 31")
         
         let parameters = ConfigurationParameters(startDate: startDate!, endDate: endDate!)
-        
+     
         return parameters
     }
 }
@@ -164,6 +174,21 @@ extension CalendarViewController: JTAppleCalendarViewDelegate {
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
         
         if cellState.dateBelongsTo != .thisMonth {
+            Storage.roomsDate = []
+            scheduleRoomTableView.reloadData()
+            return
+        }
+        
+        
+        let todayStringCorrection = today.toString(dateFormat: "dd/MM/yyyy")
+        let todayCorrect = todayStringCorrection.toDate(dateFormat: "dd/MM/yyyy")
+
+        if cellState.date < todayCorrect {
+            
+            print(cellState.date)
+            print(todayCorrect)
+            
+            ProgressHUD.showError("Out of date!")
             Storage.roomsDate = []
             scheduleRoomTableView.reloadData()
             return
@@ -212,7 +237,7 @@ extension CalendarViewController:  UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let room = Storage.rooms[indexPath.row]
-        roomSchedule.room = room
+        roomParam = room
         
         performSegue(withIdentifier: "toAddAppointment", sender: nil)
     }

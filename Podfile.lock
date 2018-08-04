@@ -1,16 +1,20 @@
 PODS:
   - JTAppleCalendar (7.1.5)
+  - ProgressHUD (2.60)
 
 DEPENDENCIES:
   - JTAppleCalendar (~> 7.0)
+  - ProgressHUD
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - JTAppleCalendar
+    - ProgressHUD
 
 SPEC CHECKSUMS:
   JTAppleCalendar: 2d4f974f9f3c8b4964d51ca1f6e004883c031fbe
+  ProgressHUD: 4e4efbaf4f5de8bd32e0c4c3b6644a90ea1a8c3e
 
-PODFILE CHECKSUM: 304bb2f63cd8b49b0e509c927e22d659c6a4c6f9
+PODFILE CHECKSUM: c917995e2bd856e4d2b58aa3a1fef66f56547858
 
 COCOAPODS: 1.5.3

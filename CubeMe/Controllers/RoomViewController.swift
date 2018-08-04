@@ -79,7 +79,6 @@ class RoomViewController: UIViewController {
         case "saveRoom" where room != nil:
             
             setupEditRoom()
-            
             destination.roomTableView.reloadData()
             
         case "saveRoom" where room == nil:
@@ -89,7 +88,6 @@ class RoomViewController: UIViewController {
             
             Storage.rooms.append(room)
             destination.roomTableView.reloadData()
-            //destination.rooms.append(room)
             
         default:
             print("Error")
@@ -98,9 +96,6 @@ class RoomViewController: UIViewController {
     }
     
     @IBAction func saveRoom(_ sender: Any) {
-        //navigationController?.popViewController(animated: true)
-        //self.dismiss(animated: true, completion: nil)
-        
         performSegue(withIdentifier: "saveRoom", sender: nil)
     }
     

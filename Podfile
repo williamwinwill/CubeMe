@@ -7,5 +7,6 @@ target 'CubeMe' do
 
   # Pods for CubeMe
   pod 'JTAppleCalendar', '~> 7.0'
+  pod 'ProgressHUD'
 
 end

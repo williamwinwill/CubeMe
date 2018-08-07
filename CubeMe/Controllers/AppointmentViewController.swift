@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import Firebase
 
 class AppointmentViewController: UIViewController {
     
     var dateParam: Date?
     var roomParam: Room?
     var appointment: Appointment?
+    var schedule: Schedule?
     var hour: String?
     
     //Labels
@@ -58,11 +60,17 @@ class AppointmentViewController: UIViewController {
     }
     
     @objc func addTapped() {
-        //performSegue(withIdentifier: "saveAppointment", sender: nil)
+        //MARK: Add appoit
         
         guard let date = dateParam, let hour = hour else {return}
         
         let appointment = Appointment(description: descriptionTextField.text!, hour: hour)
+        
+        ScheduleService.retrive(date: "", uidRoom: "")
+        
+        
+        
+        //if var appointments2 =
         
         if var appointments = roomParam?.schedule[date]  {
             
@@ -70,13 +78,24 @@ class AppointmentViewController: UIViewController {
                 everyAppointment.hour == appointment.hour
             }
             
+            //let isHourThere2 =
+            
             if isHourThere { return }
             
+            AppointmentService.create(appointment: appointment)
             appointments.append(appointment)
+            
+            let schedule = Schedule(date: date, roomUid: (roomParam?.uid)!, roomName: (roomParam?.name)!)
+            print("wwwwwww \(schedule)")
+            ScheduleService.create(schedule: schedule)
             
             roomParam?.schedule[date] = appointments
             
         } else {
+            
+            AppointmentService.create(appointment: appointment)
+            let schedule = Schedule(date: date, roomUid: (roomParam?.uid)!, roomName: (roomParam?.name)!)
+            ScheduleService.create(schedule: schedule)
             
             roomParam?.schedule[date] = [appointment]
         }

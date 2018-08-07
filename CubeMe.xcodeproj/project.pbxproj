@@ -11,6 +11,16 @@
 		401002E5210D470F00748188 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401002E4210D470F00748188 /* Room.swift */; };
 		401002E8210D492400748188 /* RoomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401002E7210D492400748188 /* RoomTableViewCell.swift */; };
 		4011D4C5210BDB85004F9A6D /* RoomTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4011D4C4210BDB85004F9A6D /* RoomTableViewController.swift */; };
+		40134B7B2118A4AF0005AB16 /* RoomService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40134B7A2118A4AF0005AB16 /* RoomService.swift */; };
+		40134B7D2118C4AE0005AB16 /* RoleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40134B7C2118C4AE0005AB16 /* RoleViewController.swift */; };
+		40134B7F2118CB550005AB16 /* UIButton+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40134B7E2118CB540005AB16 /* UIButton+Style.swift */; };
+		40134B812118CC180005AB16 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40134B802118CC180005AB16 /* ProfileViewController.swift */; };
+		40134B832118F1F60005AB16 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40134B822118F1F60005AB16 /* Schedule.swift */; };
+		40134B852118F69C0005AB16 /* ScheduleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40134B842118F69C0005AB16 /* ScheduleService.swift */; };
+		40134B872118F7AA0005AB16 /* AppointmentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40134B862118F7AA0005AB16 /* AppointmentService.swift */; };
+		403529C52117B8DC00D45F66 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403529C42117B8DC00D45F66 /* LoginViewController.swift */; };
+		403529C92117C06D00D45F66 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403529C82117C06D00D45F66 /* Constants.swift */; };
+		403529CB2117C10B00D45F66 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 403529CA2117C10B00D45F66 /* GoogleService-Info.plist */; };
 		405EF8B52113860E00F64CCB /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405EF8B42113860E00F64CCB /* CollectionViewCell.swift */; };
 		406F17332110C77C00079BDA /* Appointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406F17322110C77C00079BDA /* Appointment.swift */; };
 		406F17352110C9B100079BDA /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406F17342110C9B100079BDA /* CalendarViewController.swift */; };
@@ -22,6 +32,7 @@
 		4073A360210FD67700A99E59 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4073A35F210FD67700A99E59 /* Storage.swift */; };
 		408BEC112110BF6600130F69 /* UILabel+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408BEC102110BF6600130F69 /* UILabel+Image.swift */; };
 		408BEC132110BFEA00130F69 /* Date+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408BEC122110BFEA00130F69 /* Date+String.swift */; };
+		408DD0572117C7BD00CD9549 /* UIViewController+DimissKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408DD0562117C7BD00CD9549 /* UIViewController+DimissKeyboard.swift */; };
 		40AE12B821079CC80032CA37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AE12B721079CC80032CA37 /* AppDelegate.swift */; };
 		40AE12BD21079CC80032CA37 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40AE12BB21079CC80032CA37 /* Main.storyboard */; };
 		40AE12BF21079CC90032CA37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40AE12BE21079CC90032CA37 /* Assets.xcassets */; };
@@ -37,6 +48,16 @@
 		401002E4210D470F00748188 /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		401002E7210D492400748188 /* RoomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomTableViewCell.swift; sourceTree = "<group>"; };
 		4011D4C4210BDB85004F9A6D /* RoomTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomTableViewController.swift; sourceTree = "<group>"; };
+		40134B7A2118A4AF0005AB16 /* RoomService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomService.swift; sourceTree = "<group>"; };
+		40134B7C2118C4AE0005AB16 /* RoleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleViewController.swift; sourceTree = "<group>"; };
+		40134B7E2118CB540005AB16 /* UIButton+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Style.swift"; sourceTree = "<group>"; };
+		40134B802118CC180005AB16 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		40134B822118F1F60005AB16 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
+		40134B842118F69C0005AB16 /* ScheduleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleService.swift; sourceTree = "<group>"; };
+		40134B862118F7AA0005AB16 /* AppointmentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentService.swift; sourceTree = "<group>"; };
+		403529C42117B8DC00D45F66 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		403529C82117C06D00D45F66 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		403529CA2117C10B00D45F66 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		405EF8B42113860E00F64CCB /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		406F17322110C77C00079BDA /* Appointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appointment.swift; sourceTree = "<group>"; };
 		406F17342110C9B100079BDA /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
@@ -48,6 +69,7 @@
 		4073A35F210FD67700A99E59 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		408BEC102110BF6600130F69 /* UILabel+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Image.swift"; sourceTree = "<group>"; };
 		408BEC122110BFEA00130F69 /* Date+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+String.swift"; sourceTree = "<group>"; };
+		408DD0562117C7BD00CD9549 /* UIViewController+DimissKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+DimissKeyboard.swift"; sourceTree = "<group>"; };
 		40AE12B421079CC80032CA37 /* CubeMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CubeMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		40AE12B721079CC80032CA37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		40AE12BC21079CC80032CA37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -90,6 +112,9 @@
 			isa = PBXGroup;
 			children = (
 				4073A35F210FD67700A99E59 /* Storage.swift */,
+				40134B7A2118A4AF0005AB16 /* RoomService.swift */,
+				40134B842118F69C0005AB16 /* ScheduleService.swift */,
+				40134B862118F7AA0005AB16 /* AppointmentService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -108,6 +133,8 @@
 				408BEC122110BFEA00130F69 /* Date+String.swift */,
 				406F17362110CA0F00079BDA /* UIColor+Hex.swift */,
 				40C2B88A2111068300FBC912 /* String+Date.swift */,
+				408DD0562117C7BD00CD9549 /* UIViewController+DimissKeyboard.swift */,
+				40134B7E2118CB540005AB16 /* UIButton+Style.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -126,6 +153,8 @@
 			isa = PBXGroup;
 			children = (
 				40AE12C321079CC90032CA37 /* Info.plist */,
+				403529CA2117C10B00D45F66 /* GoogleService-Info.plist */,
+				403529C82117C06D00D45F66 /* Constants.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -168,11 +197,14 @@
 		40AE12C92107D1A80032CA37 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				403529C42117B8DC00D45F66 /* LoginViewController.swift */,
 				40D9C335210BE14800148D4C /* RoomViewController.swift */,
 				4011D4C4210BDB85004F9A6D /* RoomTableViewController.swift */,
 				406F17342110C9B100079BDA /* CalendarViewController.swift */,
 				406F173C2110DA5900079BDA /* AppointmentViewController.swift */,
 				40F7E53F211516B80094021A /* MyAppointmentViewController.swift */,
+				40134B7C2118C4AE0005AB16 /* RoleViewController.swift */,
+				40134B802118CC180005AB16 /* ProfileViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -181,6 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				401002E4210D470F00748188 /* Room.swift */,
+				40134B822118F1F60005AB16 /* Schedule.swift */,
 				406F17322110C77C00079BDA /* Appointment.swift */,
 			);
 			path = Models;
@@ -265,6 +298,7 @@
 			files = (
 				406F173B2110CC8C00079BDA /* Calendar.storyboard in Resources */,
 				40AE12C221079CC90032CA37 /* LaunchScreen.storyboard in Resources */,
+				403529CB2117C10B00D45F66 /* GoogleService-Info.plist in Resources */,
 				40AE12BF21079CC90032CA37 /* Assets.xcassets in Resources */,
 				40AE12BD21079CC80032CA37 /* Main.storyboard in Resources */,
 			);
@@ -298,13 +332,21 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-CubeMe/Pods-CubeMe-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
-				"${BUILT_PRODUCTS_DIR}/ProgressHUD/ProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTAppleCalendar.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -322,19 +364,29 @@
 				408BEC112110BF6600130F69 /* UILabel+Image.swift in Sources */,
 				405EF8B52113860E00F64CCB /* CollectionViewCell.swift in Sources */,
 				401002E8210D492400748188 /* RoomTableViewCell.swift in Sources */,
+				40134B7D2118C4AE0005AB16 /* RoleViewController.swift in Sources */,
+				403529C52117B8DC00D45F66 /* LoginViewController.swift in Sources */,
 				406F17332110C77C00079BDA /* Appointment.swift in Sources */,
+				40134B7B2118A4AF0005AB16 /* RoomService.swift in Sources */,
 				4011D4C5210BDB85004F9A6D /* RoomTableViewController.swift in Sources */,
+				403529C92117C06D00D45F66 /* Constants.swift in Sources */,
 				4073A35E210FBF5900A99E59 /* ScheduleRoomTableViewCell.swift in Sources */,
 				406F17372110CA0F00079BDA /* UIColor+Hex.swift in Sources */,
 				406F173D2110DA5900079BDA /* AppointmentViewController.swift in Sources */,
 				4073A360210FD67700A99E59 /* Storage.swift in Sources */,
 				406F17392110CA5800079BDA /* CustomCell.swift in Sources */,
+				408DD0572117C7BD00CD9549 /* UIViewController+DimissKeyboard.swift in Sources */,
 				40F7E542211517080094021A /* AppointmentTableViewCell.swift in Sources */,
 				40F7E540211516B80094021A /* MyAppointmentViewController.swift in Sources */,
 				40C2B88B2111068300FBC912 /* String+Date.swift in Sources */,
 				406F17352110C9B100079BDA /* CalendarViewController.swift in Sources */,
 				401002E5210D470F00748188 /* Room.swift in Sources */,
+				40134B852118F69C0005AB16 /* ScheduleService.swift in Sources */,
+				40134B7F2118CB550005AB16 /* UIButton+Style.swift in Sources */,
+				40134B872118F7AA0005AB16 /* AppointmentService.swift in Sources */,
+				40134B812118CC180005AB16 /* ProfileViewController.swift in Sources */,
 				408BEC132110BFEA00130F69 /* Date+String.swift in Sources */,
+				40134B832118F1F60005AB16 /* Schedule.swift in Sources */,
 				40AE12B821079CC80032CA37 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

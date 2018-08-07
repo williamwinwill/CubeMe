@@ -7,17 +7,15 @@
 //
 
 import Foundation
+import FirebaseDatabase.FIRDataSnapshot
 
 class Room {
     
-    //    init(uid: Int, name: String) {
     init( name: String) {
         self.name = name
-        //self.uid = uxid
-        //self.schedule = []
     }
     
-    var uid: Int?
+    var uid: String = ""
     var name: String    
     var location: String = ""
     
@@ -30,5 +28,45 @@ class Room {
     var projector: Bool = false
     
     var schedule = [Date: [Appointment]]()
+    
+    var dictValue: [String : Any] {
+        
+        return ["uid": uid,
+                "name" : name,
+                "location" : location,
+                "lock" : lock,
+                "chair" : chair,
+                "coffee" : coffee,
+                "white_board" : whiteBoard,
+                "wifi" : wifi,
+                "air_conditioner" : airConditioner,
+                "projector" : projector]
+    }
+    
+    init?(snapshot: DataSnapshot) {
+        guard let dict = snapshot.value as? [String : Any],
+            let uid = dict["uid"] as? String,
+            let name = dict["name"] as? String,
+            let location = dict["location"] as? String,
+            let lock = dict["lock"] as? Bool,
+            let chair = dict["chair"] as? Int,
+            let coffee = dict["coffee"] as? Bool,
+            let white_board = dict["white_board"] as? Bool,
+            let wifi = dict["wifi"] as? Bool,
+            let air_conditioner = dict["air_conditioner"] as? Bool,
+            let projector = dict["projector"] as? Bool
+            else { return nil }
+        
+        self.uid = uid
+        self.name = name
+        self.location = location
+        self.lock = lock
+        self.chair = chair
+        self.coffee = coffee
+        self.whiteBoard = white_board
+        self.wifi = wifi
+        self.airConditioner = air_conditioner
+        self.projector = projector
+    }
     
 }

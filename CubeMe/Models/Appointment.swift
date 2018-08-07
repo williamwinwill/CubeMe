@@ -10,16 +10,26 @@ import Foundation
 
 class Appointment {
     
-    var description: String?
-    var hour: String?
-    var user: Any?
+    var uid: String = ""
+    var description: String
+    var hour: String
+    var user: String = ""
+    
     var date: Date?
     var roomName: String?
-    
     
     init(description: String, hour: String) {
         
         self.description = description
         self.hour = hour
     }
+    
+    var dictValue: [String : Any] {
+        
+        return ["uid": uid,
+                "description" : description,
+                "hour" : hour,
+                "user" : user]
+    }
+
 }

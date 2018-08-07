@@ -31,6 +31,7 @@ class Storage {
             
             rooms.append(room)
             
+            //RoomService.create(room: room)
         }
         
         setupHour()

@@ -14,7 +14,7 @@
         <!--Welcome-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="CubeMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="CubeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -23,73 +23,94 @@
                                 <rect key="frame" x="16" y="239" width="343" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DK7-hI-eUa">
                                 <rect key="frame" x="16" y="338" width="343" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nIt-pR-jFe">
                                 <rect key="frame" x="16" y="210" width="54" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="17"/>
                                 <color key="textColor" red="0.68235294117647061" green="0.92549019607843142" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CubeMe" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P7f-UP-qXD">
                                 <rect key="frame" x="67" y="103" width="240" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <fontDescription key="fontDescription" name="Georgia-Bold" family="Georgia" pointSize="40"/>
                                 <color key="textColor" red="0.8901960784313725" green="0.70980392156862748" blue="0.019607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jPA-Vk-CqB">
-                                <rect key="frame" x="16" y="309" width="74" height="21"/>
+                                <rect key="frame" x="16" y="309" width="73" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="17"/>
                                 <color key="textColor" red="0.68235294117647061" green="0.92549019607843142" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="06g-9d-ZKv">
-                                <rect key="frame" x="141" y="463" width="92" height="57"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6dA-Oi-JZy">
+                                <rect key="frame" x="16" y="489" width="343" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.019607843137254902" green="0.40000000000000002" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                <color key="backgroundColor" red="0.52156862749999999" green="0.74901960779999999" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Georgia-Bold" family="Georgia" pointSize="20"/>
+                                <state key="normal" title="REGISTER">
+                                    <color key="titleColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="registerPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fhe-Vx-sEJ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="06g-9d-ZKv">
+                                <rect key="frame" x="16" y="419" width="343" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.52156862745098043" green="0.74901960784313726" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Georgia-Bold" family="Georgia" pointSize="20"/>
                                 <state key="normal" title="LOGIN">
                                     <color key="titleColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="L1J-7V-aMf" kind="show" identifier="rolePage" id="E7f-ft-iiR"/>
+                                    <action selector="logInPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7Lo-aD-vvL"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.015686274509803921" green="0.2627450980392157" blue="0.53725490196078429" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Welcome" id="t7l-f4-QxH"/>
+                    <navigationItem key="navigationItem" title="Welcome" id="t7l-f4-QxH">
+                        <barButtonItem key="backBarButtonItem" title="Logout" id="CX7-d7-6W2"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="emailTextfield" destination="xkQ-sx-uFg" id="pvk-c6-iDb"/>
+                        <outlet property="loginButton" destination="06g-9d-ZKv" id="qm5-4Z-awl"/>
+                        <outlet property="passwordTextfield" destination="DK7-hI-eUa" id="g8X-zU-D4g"/>
+                        <outlet property="registerButton" destination="6dA-Oi-JZy" id="dqF-I8-QCg"/>
+                        <segue destination="L1J-7V-aMf" kind="show" identifier="goToProfile" id="8B2-Sa-d6u"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1076" y="132.68365817091455"/>
         </scene>
-        <!--View Controller-->
+        <!--Home-->
         <scene sceneID="6qh-Lp-HwR">
             <objects>
-                <viewController id="L1J-7V-aMf" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RoleViewController" title="Home" id="L1J-7V-aMf" customClass="RoleViewController" customModule="CubeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EY1-Td-CQb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PWc-yg-Agl">
-                                <rect key="frame" x="104" y="222" width="167" height="42"/>
+                                <rect key="frame" x="76" y="224" width="227" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.019607843137254902" green="0.40000000000000002" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
-                                <state key="normal" title="Create a Room">
+                                <color key="backgroundColor" red="0.52156862749999999" green="0.74901960779999999" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Georgia-Bold" family="Georgia" pointSize="30"/>
+                                <state key="normal" title="Create Rooms">
                                     <color key="titleColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -97,11 +118,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j94-sl-pru">
-                                <rect key="frame" x="104" y="363" width="167" height="42"/>
+                                <rect key="frame" x="76" y="361" width="227" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.019607843137254902" green="0.40000000000000002" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
-                                <state key="normal" title="Book Room">
+                                <color key="backgroundColor" red="0.52156862749999999" green="0.74901960779999999" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Georgia-Bold" family="Georgia" pointSize="30"/>
+                                <state key="normal" title="Book Rooms">
                                     <color key="titleColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -112,6 +133,10 @@
                         <color key="backgroundColor" red="0.015686274509803921" green="0.2627450980392157" blue="0.53725490196078429" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="eAd-gP-eOM"/>
                     </view>
+                    <connections>
+                        <outlet property="bookRoomsButton" destination="j94-sl-pru" id="0q6-lx-1WI"/>
+                        <outlet property="createRoomsButton" destination="PWc-yg-Agl" id="mdT-Rl-ncK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mwO-jC-Idv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -435,10 +460,10 @@
             </objects>
             <point key="canvasLocation" x="3677.5999999999999" y="-144.3778110944528"/>
         </scene>
-        <!--My Info-->
+        <!--Profile-->
         <scene sceneID="oUe-PK-HPO">
             <objects>
-                <viewController id="aF6-QE-tfb" sceneMemberID="viewController">
+                <viewController id="aF6-QE-tfb" customClass="ProfileViewController" customModule="CubeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kCF-Fh-1Dc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -485,7 +510,11 @@
                         <color key="backgroundColor" red="0.015686274509803921" green="0.2627450980392157" blue="0.53725490196078429" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="idj-3c-IOL"/>
                     </view>
-                    <navigationItem key="navigationItem" title="My Info" id="YZ6-sd-M1T"/>
+                    <navigationItem key="navigationItem" title="Profile" id="YZ6-sd-M1T"/>
+                    <connections>
+                        <outlet property="myAppointmensButton" destination="ylr-eb-8oj" id="O3w-gG-cDp"/>
+                        <outlet property="scheduleButton" destination="h7Z-3A-VZp" id="WG8-ZX-j0P"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RRb-7V-usT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -580,6 +609,7 @@
         <!--Navigation Controller-->
         <scene sceneID="gfy-tL-Cod">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ymp-Ei-p2Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3hi-8g-5rZ" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="IeH-8n-ZEN">
@@ -591,7 +621,6 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="NR8-nQ-Mbo"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ymp-Ei-p2Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="166" y="133"/>
         </scene>

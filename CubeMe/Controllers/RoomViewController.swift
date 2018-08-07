@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class RoomViewController: UIViewController {
     
@@ -55,16 +56,13 @@ class RoomViewController: UIViewController {
     
     override func viewDidLoad() {
         
-        //Dismiss Keyboard
-        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
-        
+        self.hideKeyboardWhenTappedAround()
         setupLabelsRoom()
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         setupLabelImages()
     }
     
@@ -79,14 +77,20 @@ class RoomViewController: UIViewController {
         case "saveRoom" where room != nil:
             
             setupEditRoom()
+            guard let room = room else { return }
+            RoomService.update(uid: room.uid, room: room)
             destination.roomTableView.reloadData()
             
         case "saveRoom" where room == nil:
             
+            SVProgressHUD.show()
+            
             let room = Room(name: nameTextField.text!)
             setupNewRoom(room)
             
-            Storage.rooms.append(room)
+            RoomService.create(room: room)
+            
+            //Storage.rooms.append(room)
             destination.roomTableView.reloadData()
             
         default:

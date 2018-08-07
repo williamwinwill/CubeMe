@@ -8,7 +8,7 @@
 
 import UIKit
 import JTAppleCalendar
-import ProgressHUD
+import SVProgressHUD
 
 class CalendarViewController: UIViewController {
     
@@ -124,7 +124,7 @@ class CalendarViewController: UIViewController {
         
         switch identifier {
             
-        case "toAddAppointment":
+        case Constants.Segue.goToAddAppointment:
             
             let avc = segue.destination as! AppointmentViewController
             avc.dateParam = dateParam
@@ -184,11 +184,8 @@ extension CalendarViewController: JTAppleCalendarViewDelegate {
         let todayCorrect = todayStringCorrection.toDate(dateFormat: "dd/MM/yyyy")
 
         if cellState.date < todayCorrect {
-            
-            print(cellState.date)
-            print(todayCorrect)
-            
-            ProgressHUD.showError("Out of date!")
+
+            SVProgressHUD.showError(withStatus: "Out of date!")
             Storage.roomsDate = []
             scheduleRoomTableView.reloadData()
             return
@@ -218,7 +215,7 @@ extension CalendarViewController:  UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "scheduleRoomTableViewCell") as! ScheduleRoomTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellName.scheduleRoomTableViewCell) as! ScheduleRoomTableViewCell
         let room = Storage.roomsDate[indexPath.row]
         setupRoomCell(cell, room)
         
@@ -239,7 +236,7 @@ extension CalendarViewController:  UITableViewDelegate, UITableViewDataSource {
         let room = Storage.rooms[indexPath.row]
         roomParam = room
         
-        performSegue(withIdentifier: "toAddAppointment", sender: nil)
+        performSegue(withIdentifier: Constants.Segue.goToAddAppointment, sender: nil)
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

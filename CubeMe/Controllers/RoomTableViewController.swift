@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class RoomTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var roomTableView: UITableView!
+    
+    var roomArray: [Room] = [Room]()
     
     @IBAction func unwindWithSegue(_ segue: UIStoryboardSegue) {
         
@@ -21,6 +24,8 @@ class RoomTableViewController: UIViewController, UITableViewDelegate, UITableVie
         
         roomTableView.delegate = self
         roomTableView.dataSource = self
+        
+        RoomService.retrieve(roomViewController: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -33,7 +38,8 @@ class RoomTableViewController: UIViewController, UITableViewDelegate, UITableVie
             
             let selectedIndex = roomTableView.indexPathForSelectedRow
             guard let index = selectedIndex?.row else {return}
-            let room = Storage.rooms[index]
+            let room = roomArray[index]
+
             
             let rvc = segue.destination as! RoomViewController
             rvc.room = room
@@ -44,15 +50,14 @@ class RoomTableViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //return rooms.count
-        return Storage.rooms.count
+        return roomArray.count
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "roomTableViewCell") as! RoomTableViewCell
-        let room = Storage.rooms[indexPath.row]
+        let room = roomArray[indexPath.row]
         setupRoomCell(cell, room)
         
         let backgroundView = UIView()
@@ -64,7 +69,10 @@ class RoomTableViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
-            Storage.rooms.remove(at: indexPath.row)
+            
+            let room = self.roomArray[indexPath.row]
+            RoomService.remove(uid: room.uid)
+            RoomService.retrieve(roomViewController: self)
             self.roomTableView.reloadData()
         }
         
@@ -76,6 +84,7 @@ class RoomTableViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     private func setupRoomCell(_ cell: RoomTableViewCell, _ room: Room) {
+        
         cell.roomNameLabel.text = room.name
         cell.roomLocationLabel.text = room.location
         

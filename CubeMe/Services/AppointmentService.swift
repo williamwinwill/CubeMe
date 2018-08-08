@@ -35,9 +35,56 @@ class AppointmentService {
                 
                 print("Saved succssfully!")
                 SVProgressHUD.dismiss(withDelay: 1)
-                SVProgressHUD.showSuccess(withStatus: "OK")
-                
+                SVProgressHUD.showSuccess(withStatus: "Room Booked")
             }
+        }
+    }
+    
+    static func retriveWithSchedule(uidShedule: String, completion: @escaping ([Appointment]) -> Void) {
+        
+        let appointmentDB = Database.database().reference().child(Constants.FirebaseRoot.appointments)
+        let query = appointmentDB.queryOrdered(byChild: "schedule_uid").queryEqual(toValue: uidShedule)
+        
+        query.observeSingleEvent(of: .value) { snapshot in
+            
+            let dispatchGroup = DispatchGroup()
+            var result = [Appointment]()
+            
+            for rest in snapshot.children.allObjects as! [DataSnapshot] {
+                guard let appointment = Appointment(snapshot: rest) else {return}
+                dispatchGroup.enter()
+                result.append(appointment)
+                
+                dispatchGroup.leave()
+            }
+            
+            dispatchGroup.notify(queue: .main, execute: {
+                completion(result)
+            })
+        }
+    }
+    
+    static func retriveWithUser(user: String, completion: @escaping ([Appointment]) -> Void) {
+        
+        let appointmentDB = Database.database().reference().child(Constants.FirebaseRoot.appointments)
+        let query = appointmentDB.queryOrdered(byChild: "user").queryEqual(toValue: user)
+        
+        query.observeSingleEvent(of: .value) { snapshot in
+            
+            let dispatchGroup = DispatchGroup()
+            var result = [Appointment]()
+            
+            for rest in snapshot.children.allObjects as! [DataSnapshot] {
+                guard let appointment = Appointment(snapshot: rest) else {return}
+                dispatchGroup.enter()
+                result.append(appointment)
+                
+                dispatchGroup.leave()
+            }
+            
+            dispatchGroup.notify(queue: .main, execute: {
+                completion(result)
+            })
         }
     }
 }

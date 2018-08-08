@@ -31,7 +31,18 @@ class Storage {
             
             rooms.append(room)
             
-            //RoomService.create(room: room)
+//            RoomService.create(room: room)
+            
+            let s = Schedule(date: Date(), roomUid: room.uid, roomName: room.name)
+
+//            ScheduleService.create(schedule: s)
+            
+            for newIndex in 1...3 {
+                let a = Appointment(description: "Conference \(index)", hour: "\(newIndex) PM")
+                a.scheduleUid = s.uid
+                //AppointmentService.create(appointment: a)
+            }
+            
         }
         
         setupHour()

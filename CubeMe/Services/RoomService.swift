@@ -59,6 +59,26 @@ class RoomService {
 
     }
     
+    static func retrieve(calendarViewController: CalendarViewController) {
+        
+        //SVProgressHUD.show()
+        calendarViewController.roomArray = []
+        
+        let roomDB = Database.database().reference().child(Constants.FirebaseRoot.rooms)
+        
+        roomDB.observe(.childAdded) { (snapshot) in
+            
+            guard let room = Room(snapshot: snapshot) else {
+                return
+            }
+            
+            calendarViewController.roomArray.append(room)
+            calendarViewController.scheduleRoomTableView.reloadData()
+            //SVProgressHUD.dismiss()
+        }
+        
+    }
+    
     static func remove(uid: String){
         
         let roomDB = Database.database().reference().child(Constants.FirebaseRoot.rooms)

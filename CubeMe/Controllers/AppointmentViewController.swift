@@ -13,8 +13,8 @@ class AppointmentViewController: UIViewController {
     
     var dateParam: Date?
     var roomParam: Room?
-    var appointment: Appointment?
     var schedule: Schedule?
+    var appointmentArray: [Appointment]?
     var hour: String?
     
     //Labels
@@ -35,12 +35,10 @@ class AppointmentViewController: UIViewController {
     
     //Collection
     @IBOutlet var collectionView: UICollectionView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(addTapped))
-        
         
         //Dismiss Keyboard
         //self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
@@ -57,47 +55,58 @@ class AppointmentViewController: UIViewController {
         
         setupIconColor(room)
         
+        collectionView.isHidden = true
     }
     
-    @objc func addTapped() {
-        //MARK: Add appoit
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        guard let date = dateParam, let hour = hour else {return}
+        guard let room = roomParam, let date = dateParam
+            else {return}
+        
+        ScheduleService.retriveWithDateAndRoom(date: date.toString(dateFormat: "dd/MM/yyyy"), uidRoom: room.uid) { (schedule) in
+            guard let result = schedule else {
+                let newSchedule = Schedule(date: date, roomUid: room.uid, roomName: room.name)
+                ScheduleService.create(schedule: newSchedule)
+                self.schedule = newSchedule
+                self.collectionView.isHidden = false
+                self.collectionView.reloadData()
+                return
+                
+            }
+            self.schedule = result
+            
+            AppointmentService.retriveWithSchedule(uidShedule: result.uid) { (appointments) in
+                
+                self.appointmentArray = appointments
+                self.collectionView.isHidden = false
+                self.collectionView.reloadData()
+            }
+        }
+    }
+    
+    
+    @objc func addTapped() {
+        
+        //MARK: Add appoit
+        guard let hour = hour, let schedule = schedule else {return}
         
         let appointment = Appointment(description: descriptionTextField.text!, hour: hour)
+        appointment.scheduleUid = schedule.uid
         
-        ScheduleService.retrive(date: "", uidRoom: "")
-        
-        
-        
-        //if var appointments2 =
-        
-        if var appointments = roomParam?.schedule[date]  {
-            
+        if var appointments = appointmentArray {
+    
             let isHourThere = appointments.contains { (everyAppointment) -> Bool in
                 everyAppointment.hour == appointment.hour
             }
-            
-            //let isHourThere2 =
             
             if isHourThere { return }
             
             AppointmentService.create(appointment: appointment)
             appointments.append(appointment)
             
-            let schedule = Schedule(date: date, roomUid: (roomParam?.uid)!, roomName: (roomParam?.name)!)
-            print("wwwwwww \(schedule)")
-            ScheduleService.create(schedule: schedule)
-            
-            roomParam?.schedule[date] = appointments
-            
         } else {
-            
             AppointmentService.create(appointment: appointment)
-            let schedule = Schedule(date: date, roomUid: (roomParam?.uid)!, roomName: (roomParam?.name)!)
-            ScheduleService.create(schedule: schedule)
-            
-            roomParam?.schedule[date] = [appointment]
         }
         
         navigationController?.popViewController(animated: true)
@@ -132,7 +141,6 @@ class AppointmentViewController: UIViewController {
             iconWhiteBoard.image = iconWhiteBoard.image?.withRenderingMode(.alwaysTemplate)
             iconWhiteBoard.tintColor = UIColor(colorWithHexValue: 0xe3b505)
         }
-        
     }
     
 }
@@ -150,29 +158,28 @@ extension AppointmentViewController: UICollectionViewDelegate, UICollectionViewD
         
         cell.oneLabel.text = hour
         
-        if let date = dateParam {
+        //MARK: Mudar Busca
+        if let appointments = appointmentArray  {
             
-            if let appointments = roomParam?.schedule[date]  {
+            let isHourThere = appointments.contains { (everyAppointment) -> Bool in
+                everyAppointment.hour == hour
+            }
+            
+            if isHourThere {
                 
-                let isHourThere = appointments.contains { (everyAppointment) -> Bool in
-                    everyAppointment.hour == hour
-                }
-                
-                if isHourThere {
-                    
-                    cell.isUserInteractionEnabled = false
-                    cell.backgroundColor = UIColor.lightGray
-                    
-                } else {
-                    
-                    cell.backgroundColor = UIColor(colorWithHexValue: 0x2d89bf)
-                }
+                cell.isUserInteractionEnabled = false
+                cell.backgroundColor = UIColor.lightGray
                 
             } else {
                 
                 cell.backgroundColor = UIColor(colorWithHexValue: 0x2d89bf)
             }
+            
+        } else {
+            
+            cell.backgroundColor = UIColor(colorWithHexValue: 0x2d89bf)
         }
+        
         
         return cell
     }

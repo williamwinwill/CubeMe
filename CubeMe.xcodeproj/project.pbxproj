@@ -198,13 +198,13 @@
 			isa = PBXGroup;
 			children = (
 				403529C42117B8DC00D45F66 /* LoginViewController.swift */,
+				40134B7C2118C4AE0005AB16 /* RoleViewController.swift */,
 				40D9C335210BE14800148D4C /* RoomViewController.swift */,
 				4011D4C4210BDB85004F9A6D /* RoomTableViewController.swift */,
+				40134B802118CC180005AB16 /* ProfileViewController.swift */,
+				40F7E53F211516B80094021A /* MyAppointmentViewController.swift */,
 				406F17342110C9B100079BDA /* CalendarViewController.swift */,
 				406F173C2110DA5900079BDA /* AppointmentViewController.swift */,
-				40F7E53F211516B80094021A /* MyAppointmentViewController.swift */,
-				40134B7C2118C4AE0005AB16 /* RoleViewController.swift */,
-				40134B802118CC180005AB16 /* ProfileViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";

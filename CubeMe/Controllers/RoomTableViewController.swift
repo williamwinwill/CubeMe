@@ -26,6 +26,7 @@ class RoomTableViewController: UIViewController, UITableViewDelegate, UITableVie
         roomTableView.dataSource = self
         
         RoomService.retrieve(roomViewController: self)
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -39,7 +40,7 @@ class RoomTableViewController: UIViewController, UITableViewDelegate, UITableVie
             let selectedIndex = roomTableView.indexPathForSelectedRow
             guard let index = selectedIndex?.row else {return}
             let room = roomArray[index]
-
+            
             
             let rvc = segue.destination as! RoomViewController
             rvc.room = room

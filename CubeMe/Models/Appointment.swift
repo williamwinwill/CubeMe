@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FirebaseDatabase.FIRDataSnapshot
 
 class Appointment {
     
@@ -14,6 +15,7 @@ class Appointment {
     var description: String
     var hour: String
     var user: String = ""
+    var scheduleUid = ""
     
     var date: Date?
     var roomName: String?
@@ -29,7 +31,22 @@ class Appointment {
         return ["uid": uid,
                 "description" : description,
                 "hour" : hour,
-                "user" : user]
+                "user" : user,
+                "schedule_uid": scheduleUid]
+    }
+    
+    init?(snapshot: DataSnapshot) {
+        guard let dict = snapshot.value as? [String : Any],
+            let uid = dict["uid"] as? String,
+            let description = dict["description"] as? String,
+            let hour = dict["hour"] as? String,
+            let scheduleUid = dict["schedule_uid"] as? String
+            else { return nil }
+        
+        self.uid = uid
+        self.description = description
+        self.hour = hour
+        self.scheduleUid = scheduleUid
     }
 
 }

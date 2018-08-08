@@ -34,44 +34,32 @@ class ScheduleService {
                 
                 print("Saved succssfully!")
                 SVProgressHUD.dismiss(withDelay: 1)
-                SVProgressHUD.showSuccess(withStatus: "Room Booked")
-                
             }
         }
     }
     
-    static func retrive(date: String, uidRoom: String) {
+    static func retriveWithDateAndRoom(date: String, uidRoom: String, completion: @escaping (Schedule?) -> Void) {
         
         let scheduleDB = Database.database().reference().child(Constants.FirebaseRoot.schedules)
+        let query = scheduleDB.queryOrdered(byChild: "room_uid").queryEqual(toValue: uidRoom)
         
-        scheduleDB.queryOrdered(byChild: "room_name").queryEqual(toValue: "Room Turing").observeSingleEvent(of: .value) { snapshot in
-            //            .observe(.value) { (snapshot) in
-            //             let dispatchGroup = DispatchGroup()
+        query.observeSingleEvent(of: .value) { snapshot in
+            
+            let dispatchGroup = DispatchGroup()
+            var result: Schedule?
             
             for rest in snapshot.children.allObjects as! [DataSnapshot] {
-                
                 guard let schedule = Schedule(snapshot: rest) else {return}
-                
-                print(schedule.uid)
-                
-                //print(schedule)
-                
-                //guard let restDict = rest.value as? [String: Any] else { continue }
-                //let name = restDict["uid"] as? String
-                
-                //print(name)
-                
-                //                guard let room = Room(snapshot: snapshot) else {
-                //                    print(snapshot)
-                //                    return completion(false)
-                //                }
-                //                dispatchGroup.enter()
-                //                print(room.uid)
-                //                dispatchGroup.leave()
-                //            dispatchGroup.notify(queue: .main, execute: {
-                //                completion(true)
-                //            })
+                dispatchGroup.enter()
+                if schedule.date.toString(dateFormat: "dd/MM/yyyy") == date {
+                    result = schedule
+                }
+                dispatchGroup.leave()
             }
+            
+            dispatchGroup.notify(queue: .main, execute: {
+                completion(result)
+            })
         }
     }
 }

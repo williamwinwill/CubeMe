@@ -77,6 +77,7 @@
                     
                     SVProgressHUD.dismiss()
                     
+                    self.defaults.set(Auth.auth().currentUser?.email, forKey: Constants.UserDefaults.currentUser)
                     self.performSegue(withIdentifier: Constants.Segue.goToProfile, sender: self)
                 }
             }

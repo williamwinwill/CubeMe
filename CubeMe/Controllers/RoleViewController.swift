@@ -18,5 +18,14 @@ class RoleViewController: UIViewController {
         
         createRoomsButton.setRoundConers()
         bookRoomsButton.setRoundConers()
+        
+        self.navigationItem.hidesBackButton = true;
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(back))
+    }
+    
+    @objc func back() {
+        let defaults = UserDefaults.standard
+        defaults.set("", forKey: Constants.UserDefaults.currentUser)
+        self.navigationController?.popViewController(animated: true)
     }
 }

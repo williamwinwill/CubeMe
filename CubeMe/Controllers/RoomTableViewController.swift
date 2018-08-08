@@ -101,5 +101,31 @@ class RoomTableViewController: UIViewController, UITableViewDelegate, UITableVie
         cell.roomLockLabel.addTextWithImage(text: "", image: image!, imageBehindText: false, keepPreviousText: false)
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        
+        if roomArray.count > 0 {
+            
+            self.roomTableView.separatorStyle = .singleLine
+            let rect = CGRect(origin: CGPoint(x: 0,y :0), size: CGSize(width: self.view.bounds.size.width, height: self.view.bounds.size.height))
+            self.roomTableView.backgroundView = UIView(frame: rect)
+            return 1
+            
+        } else {
+            
+            let rect = CGRect(origin: CGPoint(x: 0,y :0), size: CGSize(width: self.view.bounds.size.width, height: self.view.bounds.size.height))
+            let messageLabel = UILabel(frame: rect)
+            messageLabel.text = "You don't have any appointments yet."
+            messageLabel.textColor = UIColor(colorWithHexValue: 0xaeecef)
+            messageLabel.numberOfLines = 0;
+            messageLabel.textAlignment = .center;
+            messageLabel.font = UIFont(name: "TrebuchetMS", size: 20)
+            messageLabel.sizeToFit()
+            
+            self.roomTableView.backgroundView = messageLabel;
+            self.roomTableView.separatorStyle = .none;
+            return 0
+        }
+    }
+    
 }
 

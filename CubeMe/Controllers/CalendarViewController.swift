@@ -248,4 +248,30 @@ extension CalendarViewController:  UITableViewDelegate, UITableViewDataSource {
         cell.backgroundColor = UIColor(colorWithHexValue: 0x044389)
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        
+        if roomArray.count > 0 {
+            
+            self.scheduleRoomTableView.separatorStyle = .singleLine
+            let rect = CGRect(origin: CGPoint(x: 0,y :0), size: CGSize(width: self.view.bounds.size.width, height: self.view.bounds.size.height))
+            self.scheduleRoomTableView.backgroundView = UIView(frame: rect)
+            return 1
+            
+        } else {
+            
+            let rect = CGRect(origin: CGPoint(x: 0,y :0), size: CGSize(width: self.view.bounds.size.width, height: self.view.bounds.size.height))
+            let messageLabel = UILabel(frame: rect)
+            messageLabel.text = "Please, pick a day to start arrange your meeting."
+            messageLabel.textColor = UIColor(colorWithHexValue: 0xaeecef)
+            messageLabel.numberOfLines = 0;
+            messageLabel.textAlignment = .center;
+            messageLabel.font = UIFont(name: "TrebuchetMS", size: 20)
+            messageLabel.sizeToFit()
+            
+            self.scheduleRoomTableView.backgroundView = messageLabel;
+            self.scheduleRoomTableView.separatorStyle = .none;
+            return 0
+        }
+    }
+    
 }

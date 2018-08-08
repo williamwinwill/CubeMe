@@ -15,7 +15,6 @@ class Schedule {
     var date: Date
     var roomUid: String
     var roomName: String
-//    var uidAppointmens: [String] = [String]()
 
     init(date: Date, roomUid: String, roomName: String) {
         
@@ -29,8 +28,7 @@ class Schedule {
         return ["uid": uid,
                 "date" : date.toString(dateFormat: "dd/MM/yyyy"),
                 "room_uid" : roomUid,
-                "room_name" : roomName]//,
-//                "uidAppointmens" :uidAppointmens]
+                "room_name" : roomName]
     }
     
     init?(snapshot: DataSnapshot) {
@@ -38,15 +36,13 @@ class Schedule {
             let uid = dict["uid"] as? String,
             let date = dict["date"] as? String,
             let roomUid = dict["room_uid"] as? String,
-            let roomName = dict["room_name"] as? String//,
-//            let uidAppointmens = dict["uidAppointmens"] as? [String]
+            let roomName = dict["room_name"] as? String
             else { return nil }
         
         self.uid = uid
         self.date = date.toDate(dateFormat: "dd/MM/yyyy")
         self.roomUid = roomUid
         self.roomName = roomName
-//        self.uidAppointmens = uidAppointmens
         
     }
 }

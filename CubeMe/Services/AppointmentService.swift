@@ -40,7 +40,7 @@ class AppointmentService {
         }
     }
     
-    static func retriveWithSchedule(uidShedule: String, completion: @escaping ([Appointment]) -> Void) {
+    static func retriveBySchedule(uidShedule: String, completion: @escaping ([Appointment]) -> Void) {
         
         let appointmentDB = Database.database().reference().child(Constants.FirebaseRoot.appointments)
         let query = appointmentDB.queryOrdered(byChild: "schedule_uid").queryEqual(toValue: uidShedule)
@@ -64,7 +64,7 @@ class AppointmentService {
         }
     }
     
-    static func retriveWithUser(user: String, completion: @escaping ([Appointment]) -> Void) {
+    static func retriveByUser(user: String, completion: @escaping ([Appointment]) -> Void) {
         
         let appointmentDB = Database.database().reference().child(Constants.FirebaseRoot.appointments)
         let query = appointmentDB.queryOrdered(byChild: "user").queryEqual(toValue: user)
@@ -75,9 +75,17 @@ class AppointmentService {
             var result = [Appointment]()
             
             for rest in snapshot.children.allObjects as! [DataSnapshot] {
+                
                 guard let appointment = Appointment(snapshot: rest) else {return}
+                
+                let todayStringCorrection = Date().toString(dateFormat: "dd/MM/yyyy")
+                let todayCorrect = todayStringCorrection.toDate(dateFormat: "dd/MM/yyyy")
+                
                 dispatchGroup.enter()
-                result.append(appointment)
+                if appointment.date >= todayCorrect {
+                    result.append(appointment)
+                }
+                
                 
                 dispatchGroup.leave()
             }
@@ -86,5 +94,11 @@ class AppointmentService {
                 completion(result)
             })
         }
+    }
+    
+    static func remove(uid: String){
+        
+        let appointmentDB = Database.database().reference().child(Constants.FirebaseRoot.appointments)
+        appointmentDB.child(uid).removeValue()
     }
 }

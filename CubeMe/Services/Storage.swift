@@ -38,9 +38,9 @@ class Storage {
 //            ScheduleService.create(schedule: s)
             
             for newIndex in 1...3 {
-                let a = Appointment(description: "Conference \(index)", hour: "\(newIndex) PM")
+                let a = Appointment(description: "Conference \(index)", hour: "\(newIndex) PM", date: s.date, roomName: s.roomName)
                 a.scheduleUid = s.uid
-                //AppointmentService.create(appointment: a)
+//                AppointmentService.create(appointment: a)
             }
             
         }

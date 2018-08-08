@@ -76,7 +76,7 @@ class AppointmentViewController: UIViewController {
             }
             self.schedule = result
             
-            AppointmentService.retriveWithSchedule(uidShedule: result.uid) { (appointments) in
+            AppointmentService.retriveBySchedule(uidShedule: result.uid) { (appointments) in
                 
                 self.appointmentArray = appointments
                 self.collectionView.isHidden = false
@@ -91,7 +91,7 @@ class AppointmentViewController: UIViewController {
         //MARK: Add appoit
         guard let hour = hour, let schedule = schedule else {return}
         
-        let appointment = Appointment(description: descriptionTextField.text!, hour: hour)
+        let appointment = Appointment(description: descriptionTextField.text!, hour: hour, date: schedule.date, roomName: schedule.roomName)
         appointment.scheduleUid = schedule.uid
         
         if var appointments = appointmentArray {

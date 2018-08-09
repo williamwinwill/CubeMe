@@ -13,6 +13,8 @@ class RoomViewController: UIViewController {
     
     var room: Room?
     
+    //MARK: IBOutlets
+    //TextFields
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var lockSegmentedControl: UISegmentedControl!
@@ -25,45 +27,22 @@ class RoomViewController: UIViewController {
     @IBOutlet weak var airConditionerSegmentedControl: UISegmentedControl!
     @IBOutlet weak var projectorSegmentedControl: UISegmentedControl!
     
-    //Labels
-    @IBOutlet weak var lockLabel: UILabel!
-    @IBOutlet weak var chairLabel: UILabel!
-    @IBOutlet weak var coffeeLabel: UILabel!
-    @IBOutlet weak var whiteBoardLabel: UILabel!
-    @IBOutlet weak var wifiLabel: UILabel!
-    @IBOutlet weak var airConditionerLabel: UILabel!
-    @IBOutlet weak var projectorLabel: UILabel!
+    //Images
+    @IBOutlet weak var lockImage: UIImageView!
+    @IBOutlet weak var chairImage: UIImageView!
+    @IBOutlet weak var coffeeImage: UIImageView!
+    @IBOutlet weak var whiteBoardImage: UIImageView!
+    @IBOutlet weak var wifiImage: UIImageView!
+    @IBOutlet weak var airImage: UIImageView!
+    @IBOutlet weak var projectotImage: UIImageView!
     
-    
-    @IBAction func lockSegmentControleTapped(_ sender: Any) {
-        
-        var image: UIImage?
-        
-        switch lockSegmentedControl.selectedSegmentIndex {
-        case 0:
-            image = UIImage(named:"icons-unlocked")
-            
-        case 1:
-            image = UIImage(named:"icons-locked")
-            
-        default:
-            print("Error")
-        }
-        
-        lockLabel.addTextWithImage(text: "", image: image!, imageBehindText: false, keepPreviousText: false)
-    }
-    
-    
+
+    //MARK: overrides
     override func viewDidLoad() {
-        
+
         self.hideKeyboardWhenTappedAround()
         setupLabelsRoom()
         
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        setupLabelImages()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -90,7 +69,6 @@ class RoomViewController: UIViewController {
             
             RoomService.create(room: room)
             
-            //Storage.rooms.append(room)
             destination.roomTableView.reloadData()
             
         default:
@@ -99,11 +77,89 @@ class RoomViewController: UIViewController {
         
     }
     
+    //MARK: IBActions
+    @IBAction func lockSegmentControleTapped(_ sender: Any) {
+
+        switch lockSegmentedControl.selectedSegmentIndex {
+        
+        case 0:
+            
+            UIView.transition(with: lockImage,
+                              duration: 1,
+                              options: .transitionCrossDissolve,
+                              animations: { self.lockImage.image = UIImage(named:"icons-unlocked") },
+                              completion: nil)
+            
+        case 1:
+            
+            UIView.transition(with: lockImage,
+                              duration: 1,
+                              options: .transitionCrossDissolve,
+                              animations: { self.lockImage.image = UIImage(named:"icons-locked-color") },
+                              completion: nil)
+            
+        default:
+            print("Error")
+        }
+    }
+    
     @IBAction func saveRoom(_ sender: Any) {
         performSegue(withIdentifier: "saveRoom", sender: nil)
     }
     
     
+    @IBAction func roomSegmentControleTapped(_ sender: UISegmentedControl) {
+        
+        if sender.selectedSegmentIndex == Constants.CMBoolean.cmFalse {
+            
+            verifyTagFromSegmentControl(tag: sender.tag, onOrOff: Constants.CMBoolean.cmFalse)
+        } else { 
+            verifyTagFromSegmentControl(tag: sender.tag, onOrOff: Constants.CMBoolean.cmTrue)
+            
+        }
+        
+    }
+    
+    //MARK: funcs
+    func verifyTagFromSegmentControl(tag: Int, onOrOff: Int) {
+        switch tag {
+        case 1:
+            changeColorImage(imageView: coffeeImage, onOrOff: onOrOff)
+        case 2:
+            changeColorImage(imageView: whiteBoardImage, onOrOff: onOrOff)
+        case 3:
+            changeColorImage(imageView: wifiImage, onOrOff: onOrOff)
+        case 4:
+            changeColorImage(imageView: airImage, onOrOff: onOrOff)
+        case 5:
+            changeColorImage(imageView: projectotImage, onOrOff: onOrOff)
+        default:
+            print("error!")
+        }
+    }
+    
+    func changeColorImage(imageView: UIImageView, onOrOff: Int) {
+        
+        imageView.image = imageView.image?.withRenderingMode(.alwaysTemplate)
+        
+        if onOrOff == Constants.CMBoolean.cmFalse {
+            
+            imageView.tintColor = UIColor(colorWithHexValue: Constants.Colors.yellow)
+            UIView.animate(withDuration: 1, animations: {
+                imageView.tintColor = UIColor(colorWithHexValue: Constants.Colors.black)
+            }, completion: nil)
+            
+        } else if onOrOff == Constants.CMBoolean.cmTrue {
+            
+            imageView.tintColor = UIColor(colorWithHexValue: Constants.Colors.black)
+            UIView.animate(withDuration: 1, animations: {
+                imageView.tintColor = UIColor(colorWithHexValue: Constants.Colors.yellow)
+            }, completion: nil)
+            
+        }
+    }
+    
+    //MARK: setups
     func setupLabelsRoom(){
         
         if let room = room {
@@ -112,15 +168,37 @@ class RoomViewController: UIViewController {
             locationTextField.text = room.location
             lockSegmentedControl.selectedSegmentIndex = room.lock.hashValue
             chairTextField.text = String(room.chair)
+            
             coffeeSegmentedControl.selectedSegmentIndex = room.coffee.hashValue
             whiteBoardSegmentedControl.selectedSegmentIndex = room.whiteBoard.hashValue
             wifiSegmentedControl.selectedSegmentIndex = room.wifi.hashValue
             airConditionerSegmentedControl.selectedSegmentIndex = room.airConditioner.hashValue
             projectorSegmentedControl.selectedSegmentIndex = room.projector.hashValue
             
+            
+            setupChangeColorImage(imageView: coffeeImage, onOrOff: room.coffee.hashValue)
+            setupChangeColorImage(imageView: whiteBoardImage, onOrOff: room.whiteBoard.hashValue)
+            setupChangeColorImage(imageView: airImage, onOrOff: room.airConditioner.hashValue)
+            setupChangeColorImage(imageView: projectotImage, onOrOff: room.projector.hashValue)
+            setupChangeColorImage(imageView: wifiImage, onOrOff: room.wifi.hashValue)
+            
         } else {
             nameTextField.text = ""
             chairTextField.text = "0"
+            
+        }
+    }
+    
+     func setupChangeColorImage(imageView: UIImageView, onOrOff: Int) {
+        
+        imageView.image = imageView.image?.withRenderingMode(.alwaysTemplate)
+        
+        if onOrOff == Constants.CMBoolean.cmTrue {
+            
+            imageView.tintColor = UIColor(colorWithHexValue: Constants.Colors.black)
+            UIView.animate(withDuration: 1, animations: {
+                imageView.tintColor = UIColor(colorWithHexValue: Constants.Colors.yellow)
+            }, completion: nil)
             
         }
     }
@@ -148,43 +226,6 @@ class RoomViewController: UIViewController {
         room?.wifi = Bool(truncating: wifiSegmentedControl.selectedSegmentIndex as NSNumber)
         room?.airConditioner = Bool(truncating: airConditionerSegmentedControl.selectedSegmentIndex as NSNumber)
         room?.projector = Bool(truncating: projectorSegmentedControl.selectedSegmentIndex as NSNumber)
-    }
-    
-    func setupLabelImages() {
-        
-        let wifiIcon = UIImage(named:"icons-wifi")
-        let chairIcon = UIImage(named:"icons-chair")
-        let coffeeIcon = UIImage(named:"icons-coffee-cup")
-        let whiteBoardIcon = UIImage(named:"icons-white-board")
-        let airConditionerIcon = UIImage(named:"icons-air-conditioning")
-        let projectorIcon = UIImage(named:"icons-projector")
-        
-        wifiLabel.addTextWithImage(text: "", image: wifiIcon!, imageBehindText: false, keepPreviousText: false)
-        chairLabel.addTextWithImage(text: "", image: chairIcon!, imageBehindText: false, keepPreviousText: false)
-        coffeeLabel.addTextWithImage(text: "", image: coffeeIcon!, imageBehindText: false, keepPreviousText: false)
-        whiteBoardLabel.addTextWithImage(text: "", image: whiteBoardIcon!, imageBehindText: false, keepPreviousText: false)
-        airConditionerLabel.addTextWithImage(text: "", image: airConditionerIcon!, imageBehindText: false, keepPreviousText: false)
-        projectorLabel.addTextWithImage(text: "", image: projectorIcon!, imageBehindText: false, keepPreviousText: false)
-        setupLockLabelImage()
-        
-        lockLabel.tintColor  = UIColor(colorWithHexValue: 0xe3b505)
-    }
-    
-    func setupLockLabelImage(){
-        let image: UIImage?
-        
-        guard let room = room else
-            {
-                lockLabel.addTextWithImage(text: "", image: UIImage(named:"icons-unlocked")!, imageBehindText: false, keepPreviousText: false)
-                return
-            }
-        
-        if room.lock {
-        image = UIImage(named:"icons-locked")
-        } else {
-        image = UIImage(named:"icons-unlocked")
-        }
-        lockLabel.addTextWithImage(text: "", image: image!, imageBehindText: false, keepPreviousText: false)
     }
     
 }

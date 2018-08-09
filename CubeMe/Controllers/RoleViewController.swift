@@ -28,4 +28,14 @@ class RoleViewController: UIViewController {
         defaults.set("", forKey: Constants.UserDefaults.currentUser)
         self.navigationController?.popViewController(animated: true)
     }
+    
+    
+    @IBAction func createRoomButtonPressed(_ sender: UIButton) {
+        
+    }
+    
+    @IBAction func bookRoomButtonPressed(_ sender: UIButton) {
+    }
+    
+    
 }

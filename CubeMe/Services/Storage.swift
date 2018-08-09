@@ -50,10 +50,10 @@ class Storage {
     
     static func setupHour() {
         
-        for h in 8...12 {
+        for h in 8...11 {
             hours.append("\(h) AM")
         }
-        
+        hours.append("12 PM")
         for h in 1...7 {
             hours.append("\(h) PM")
         }

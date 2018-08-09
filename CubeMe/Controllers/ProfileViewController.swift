@@ -19,4 +19,6 @@ class ProfileViewController: UIViewController {
         myAppointmensButton.setRoundConers()
         scheduleButton.setRoundConers()
     }
+    
+    
 }

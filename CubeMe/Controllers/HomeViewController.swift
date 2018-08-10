@@ -71,3 +71,4 @@ class HomeViewController: UIViewController {
         performSegue(withIdentifier: Constants.Segue.goToMyAppointment, sender: self )
     }
 }
+

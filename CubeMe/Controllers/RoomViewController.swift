@@ -36,10 +36,10 @@ class RoomViewController: UIViewController {
     @IBOutlet weak var airImage: UIImageView!
     @IBOutlet weak var projectotImage: UIImageView!
     
-
+    
     //MARK: overrides
     override func viewDidLoad() {
-
+        
         self.hideKeyboardWhenTappedAround()
         setupLabelsRoom()
         
@@ -57,6 +57,7 @@ class RoomViewController: UIViewController {
             
             setupEditRoom()
             guard let room = room else { return }
+            
             RoomService.update(uid: room.uid, room: room)
             destination.roomTableView.reloadData()
             
@@ -79,9 +80,9 @@ class RoomViewController: UIViewController {
     
     //MARK: IBActions
     @IBAction func lockSegmentControleTapped(_ sender: Any) {
-
-        switch lockSegmentedControl.selectedSegmentIndex {
         
+        switch lockSegmentedControl.selectedSegmentIndex {
+            
         case 0:
             
             UIView.transition(with: lockImage,
@@ -166,7 +167,6 @@ class RoomViewController: UIViewController {
             
             nameTextField.text = room.name
             locationTextField.text = room.location
-            lockSegmentedControl.selectedSegmentIndex = room.lock.hashValue
             chairTextField.text = String(room.chair)
             
             coffeeSegmentedControl.selectedSegmentIndex = room.coffee.hashValue
@@ -189,7 +189,7 @@ class RoomViewController: UIViewController {
         }
     }
     
-     func setupChangeColorImage(imageView: UIImageView, onOrOff: Int) {
+    func setupChangeColorImage(imageView: UIImageView, onOrOff: Int) {
         
         imageView.image = imageView.image?.withRenderingMode(.alwaysTemplate)
         
@@ -206,7 +206,6 @@ class RoomViewController: UIViewController {
     func setupNewRoom(_ room: Room){
         
         room.location = locationTextField.text!
-        room.lock = Bool(truncating: lockSegmentedControl.selectedSegmentIndex as NSNumber)
         room.chair = Int(chairTextField.text ?? "0")!
         room.coffee = Bool(truncating: coffeeSegmentedControl.selectedSegmentIndex as NSNumber)
         room.whiteBoard = Bool(truncating: whiteBoardSegmentedControl.selectedSegmentIndex as NSNumber)
@@ -219,7 +218,6 @@ class RoomViewController: UIViewController {
         
         room?.name = nameTextField.text ?? ""
         room?.location = locationTextField.text ?? ""
-        room?.lock = Bool(truncating: lockSegmentedControl.selectedSegmentIndex as NSNumber)
         room?.chair = Int(chairTextField.text ?? "0")!
         room?.coffee = Bool(truncating: coffeeSegmentedControl.selectedSegmentIndex as NSNumber)
         room?.whiteBoard = Bool(truncating: whiteBoardSegmentedControl.selectedSegmentIndex as NSNumber)

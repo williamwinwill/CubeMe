@@ -97,7 +97,6 @@ class MyAppointmentViewController: UIViewController, UITableViewDelegate, UITabl
             return 0
         }
     }
-    
 }
 
 

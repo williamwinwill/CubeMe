@@ -38,10 +38,9 @@ class AppointmentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(addTapped))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(addTapped))
         
         //Dismiss Keyboard
-        //self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
@@ -95,7 +94,7 @@ class AppointmentViewController: UIViewController {
         appointment.scheduleUid = schedule.uid
         
         if var appointments = appointmentArray {
-    
+            
             let isHourThere = appointments.contains { (everyAppointment) -> Bool in
                 everyAppointment.hour == appointment.hour
             }
@@ -114,33 +113,28 @@ class AppointmentViewController: UIViewController {
     
     func setupIconColor(_ room: Room) {
         
-        iconChair.image = iconChair.image?.withRenderingMode(.alwaysTemplate)
-        iconChair.tintColor = UIColor(colorWithHexValue: 0xe3b505)
-        
         if room.wifi {
-            iconWifi.image = iconWifi.image?.withRenderingMode(.alwaysTemplate)
-            iconWifi.tintColor = UIColor(colorWithHexValue: 0xe3b505)
+            setupChangeColorImage(imageView: iconWifi)
         }
         
         if room.projector {
-            iconProjector.image = iconProjector.image?.withRenderingMode(.alwaysTemplate)
-            iconProjector.tintColor = UIColor(colorWithHexValue: 0xe3b505)
+            setupChangeColorImage(imageView: iconProjector)
         }
         
         if room.coffee {
-            iconCoffee.image = iconCoffee.image?.withRenderingMode(.alwaysTemplate)
-            iconCoffee.tintColor = UIColor(colorWithHexValue: 0xe3b505)
+            
+            setupChangeColorImage(imageView: iconCoffee)
         }
         
         if room.airConditioner {
-            iconAir.image = iconAir.image?.withRenderingMode(.alwaysTemplate)
-            iconAir.tintColor = UIColor(colorWithHexValue: 0xe3b505)
+            setupChangeColorImage(imageView: iconAir)
         }
         
         if room.whiteBoard {
-            iconWhiteBoard.image = iconWhiteBoard.image?.withRenderingMode(.alwaysTemplate)
-            iconWhiteBoard.tintColor = UIColor(colorWithHexValue: 0xe3b505)
+            setupChangeColorImage(imageView: iconWhiteBoard)
         }
+        
+        
     }
     
 }
@@ -193,6 +187,19 @@ extension AppointmentViewController: UICollectionViewDelegate, UICollectionViewD
         cell.selectedBackgroundView = backgroundView
         
         hour = cell.oneLabel.text
+    }
+    
+    func setupChangeColorImage(imageView: UIImageView) {
+        
+        imageView.image = imageView.image?.withRenderingMode(.alwaysTemplate)
+        
+        imageView.tintColor = UIColor(colorWithHexValue: Constants.Colors.black)
+        
+        UIView.animate(withDuration: 1, animations: {
+            imageView.tintColor = UIColor(colorWithHexValue: Constants.Colors.yellow)
+        }, completion: nil)
+        
+        
     }
     
 }

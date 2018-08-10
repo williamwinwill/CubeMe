@@ -18,8 +18,6 @@ class Room {
     var uid: String = ""
     var name: String    
     var location: String = ""
-    
-    var lock: Bool = false
     var chair: Int = 0
     var coffee: Bool = false
     var whiteBoard: Bool = false
@@ -34,7 +32,6 @@ class Room {
         return ["uid": uid,
                 "name" : name,
                 "location" : location,
-                "lock" : lock,
                 "chair" : chair,
                 "coffee" : coffee,
                 "white_board" : whiteBoard,
@@ -48,7 +45,6 @@ class Room {
             let uid = dict["uid"] as? String,
             let name = dict["name"] as? String,
             let location = dict["location"] as? String,
-            let lock = dict["lock"] as? Bool,
             let chair = dict["chair"] as? Int,
             let coffee = dict["coffee"] as? Bool,
             let white_board = dict["white_board"] as? Bool,
@@ -60,7 +56,6 @@ class Room {
         self.uid = uid
         self.name = name
         self.location = location
-        self.lock = lock
         self.chair = chair
         self.coffee = coffee
         self.whiteBoard = white_board

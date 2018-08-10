@@ -96,6 +96,44 @@ class AppointmentService {
         }
     }
     
+    static func retriveFisrtByUser(user: String, completion: @escaping (Appointment?) -> Void) {
+        
+        let appointmentDB = Database.database().reference().child(Constants.FirebaseRoot.appointments)
+        let query = appointmentDB.queryOrdered(byChild: "user").queryEqual(toValue: user)
+        
+        query.observeSingleEvent(of: .value) { snapshot in
+            
+            let dispatchGroup = DispatchGroup()
+            var result = [Appointment]()
+            
+            for rest in snapshot.children.allObjects as! [DataSnapshot] {
+                
+                guard let appointment = Appointment(snapshot: rest) else {return}
+                
+                let todayStringCorrection = Date().toString(dateFormat: "dd/MM/yyyy")
+                let todayCorrect = todayStringCorrection.toDate(dateFormat: "dd/MM/yyyy")
+                
+                dispatchGroup.enter()
+                if appointment.date >= todayCorrect {
+                    result.append(appointment)
+                }
+                
+                
+                dispatchGroup.leave()
+            }
+            
+            dispatchGroup.notify(queue: .main, execute: {
+                result.sort {
+                    $0.date < $1.date
+                }
+               if result.isEmpty {
+                    return
+                }
+                completion(result[0])
+            })
+        }
+    }
+    
     static func remove(uid: String){
         
         let appointmentDB = Database.database().reference().child(Constants.FirebaseRoot.appointments)

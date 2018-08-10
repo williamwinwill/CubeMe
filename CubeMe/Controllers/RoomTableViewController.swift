@@ -88,17 +88,6 @@ class RoomTableViewController: UIViewController, UITableViewDelegate, UITableVie
         
         cell.roomNameLabel.text = room.name
         cell.roomLocationLabel.text = room.location
-        
-        //cell.lockImageView.image = cell.lockImageView.image?.withRenderingMode(.alwaysTemplate)
-        //cell.lockImageView.tintColor = UIColor(colorWithHexValue: 0xe3b505)
-        
-        let image: UIImage?
-        if room.lock {
-            image = UIImage(named:"icons-locked")
-        } else {
-            image = UIImage(named:"icons-unlocked")
-        }
-        cell.roomLockLabel.addTextWithImage(text: "", image: image!, imageBehindText: false, keepPreviousText: false)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -114,7 +103,7 @@ class RoomTableViewController: UIViewController, UITableViewDelegate, UITableVie
             
             let rect = CGRect(origin: CGPoint(x: 0,y :0), size: CGSize(width: self.view.bounds.size.width, height: self.view.bounds.size.height))
             let messageLabel = UILabel(frame: rect)
-            messageLabel.text = "You don't have any appointments yet."
+            messageLabel.text = "You don't have any room."
             messageLabel.textColor = UIColor(colorWithHexValue: 0xaeecef)
             messageLabel.numberOfLines = 0;
             messageLabel.textAlignment = .center;

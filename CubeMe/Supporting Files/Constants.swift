@@ -13,6 +13,8 @@ struct Constants {
     struct Segue {
         static let goToProfile = "goToProfile"
         static let goToAddAppointment = "goToAddAppointment"
+        static let goToRoom = "goToRoom"
+        static let goToMyAppointment = "goToMyAppointment"
     }
     
     struct UserDefaults {

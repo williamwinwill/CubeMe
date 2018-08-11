@@ -40,6 +40,8 @@ class AppointmentViewController: UIViewController {
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(addTapped))
         
+        self.descriptionTextField.delegate = self
+        
         //Dismiss Keyboard
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
         tap.cancelsTouchesInView = false
@@ -199,7 +201,12 @@ extension AppointmentViewController: UICollectionViewDelegate, UICollectionViewD
             imageView.tintColor = UIColor(colorWithHexValue: Constants.Colors.yellow)
         }, completion: nil)
         
-        
     }
-    
+}
+
+extension AppointmentViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
 }

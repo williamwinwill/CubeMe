@@ -29,7 +29,7 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" textContentType="email"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nIt-pR-jFe">
                                         <rect key="frame" x="16" y="80" width="54" height="21"/>
@@ -68,7 +68,7 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                 </subviews>
                                 <constraints>
@@ -507,8 +507,8 @@
                         <outlet property="chairTextField" destination="y5O-MX-Ocg" id="JgD-cA-zXh"/>
                         <outlet property="coffeeImage" destination="nWS-fh-ItB" id="XRy-Ri-0Dm"/>
                         <outlet property="coffeeSegmentedControl" destination="E5J-vL-JgV" id="fwT-1s-Re4"/>
-                        <outlet property="locationTextField" destination="lyo-k1-zY4" id="tUu-og-gIk"/>
-                        <outlet property="nameTextField" destination="0kR-m8-tiS" id="rKZ-ig-SnL"/>
+                        <outlet property="locationTextField" destination="0kR-m8-tiS" id="ATh-k2-Um2"/>
+                        <outlet property="nameTextField" destination="lyo-k1-zY4" id="GUu-eX-bAp"/>
                         <outlet property="projectorSegmentedControl" destination="d1l-br-3n5" id="yBz-x2-T3p"/>
                         <outlet property="projectotImage" destination="uzT-a6-8ZZ" id="dUa-zi-Q9d"/>
                         <outlet property="whiteBoardImage" destination="gTu-TD-5Vo" id="4Ju-wF-Ndf"/>

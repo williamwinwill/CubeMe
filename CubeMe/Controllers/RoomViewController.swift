@@ -17,7 +17,6 @@ class RoomViewController: UIViewController {
     //TextFields
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var locationTextField: UITextField!
-    @IBOutlet weak var lockSegmentedControl: UISegmentedControl!
     
     //Amenities
     @IBOutlet weak var chairTextField: UITextField!
@@ -42,6 +41,9 @@ class RoomViewController: UIViewController {
         
         self.hideKeyboardWhenTappedAround()
         setupLabelsRoom()
+        self.nameTextField.delegate = self
+        self.locationTextField.delegate = self
+        self.chairTextField.delegate = self
         
     }
     
@@ -79,31 +81,6 @@ class RoomViewController: UIViewController {
     }
     
     //MARK: IBActions
-    @IBAction func lockSegmentControleTapped(_ sender: Any) {
-        
-        switch lockSegmentedControl.selectedSegmentIndex {
-            
-        case 0:
-            
-            UIView.transition(with: lockImage,
-                              duration: 1,
-                              options: .transitionCrossDissolve,
-                              animations: { self.lockImage.image = UIImage(named:"icons-unlocked") },
-                              completion: nil)
-            
-        case 1:
-            
-            UIView.transition(with: lockImage,
-                              duration: 1,
-                              options: .transitionCrossDissolve,
-                              animations: { self.lockImage.image = UIImage(named:"icons-locked-color") },
-                              completion: nil)
-            
-        default:
-            print("Error")
-        }
-    }
-    
     @IBAction func saveRoom(_ sender: Any) {
         performSegue(withIdentifier: "saveRoom", sender: nil)
     }
@@ -192,10 +169,10 @@ class RoomViewController: UIViewController {
     func setupChangeColorImage(imageView: UIImageView, onOrOff: Int) {
         
         imageView.image = imageView.image?.withRenderingMode(.alwaysTemplate)
+        imageView.tintColor = UIColor(colorWithHexValue: Constants.Colors.black)
         
         if onOrOff == Constants.CMBoolean.cmTrue {
             
-            imageView.tintColor = UIColor(colorWithHexValue: Constants.Colors.black)
             UIView.animate(withDuration: 1, animations: {
                 imageView.tintColor = UIColor(colorWithHexValue: Constants.Colors.yellow)
             }, completion: nil)
@@ -226,4 +203,11 @@ class RoomViewController: UIViewController {
         room?.projector = Bool(truncating: projectorSegmentedControl.selectedSegmentIndex as NSNumber)
     }
     
+}
+
+extension RoomViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
 }
